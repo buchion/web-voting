@@ -12,84 +12,39 @@
 
 
 <script type="text/javascript">
-
-    // $(document).ready(function () {
-
-
-    //     // award_category.EmailAddress = $('#EmailAddress').val();
-    //     // award_category.CustomFields = [0];
-    //     // award_category.CustomFields[0].Key = "[Country]";
-    //     // award_category.CustomFields[0].Value = $('#Country').val();;
-
-    //     $.ajax({
-    //         url: 'https://reqres.in/api/users?page=2',
-    //         type: 'GET',
-    //         dataType: 'json',
-    //         data: data,
-    //         success: function (data, textStatus, xhr) {
-
-    //             console.log(data);
-    //         },
-    //         error: function (xhr, textStatus, errorThrown) {
-    //             console.log('Error Something');
-    //         },
-    //         // beforeSend: function (xhr) {
-
-    //         //     xhr.setRequestHeader("Authorization", "Basic OTdlMjVmNWJiMTdjNzI2MzVjOGU3NjlhOTI3ZTA3M2Q5MWZmMTA3ZDM2YTZkOWE5Og==");
-    //         // }
-    //     });
-    // });
-
-    // $(document).ready(function () {
-
-    //     $.ajax({
-    //         accepts: {
-    //             mycustomtype: 'application/json'
-    //         },
-    //         headers: { "Accept": "application/json" },
-    //         type: 'GET',
-    //         url: 'https://reqres.in/api/users?page=2',
-    //         // data: data,
-    //         crossDomain: true,
-    //         beforeSend: function (xhr) {
-    //             xhr.withCredentials = true;
-    //         },
-    //         success: function (data, textStatus, request) {
-    //             console.log(data);
-    //         }
-    //     });
-    // });
-
     $(document).ready(function () {
-        $.get("https://reqres.in/api/users?page=2", function (data, status) {
-            console.log(data.data);
-            var Categories = data.data
-            console.log(Categories[0].first_name);
-            $("#award-category").text(Categories[3].first_name);
+        $.get("https://www.change360network.com/slaw/api/award-category/", function (data, status) {
+            var Categories = data.results;
+            console.log(Categories);
+            var award_category = '';
+            $.each(Categories, function (key, value) {
+
+                $('#cards').append(
+                    `<li id="cards_item" class="cards_item">
+                        <div id="card" class="card">
+                        <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
+                        <div class="card_content">
+                        <h2 id='award-category' class="card_title">${value.Award_Category}</h2>
+                        <p id='description' class="card_text">${value.Details}</p>
+                        <a href="./category_nominees.html"><button class="btn card_btn">View Nominees</button></a>
+                    </div>
+                </div>
+            </li>`
+
+                )
+
+            });
         });
     });
 
 </script>
 
+
 <body>
     <div class="main">
         <h1>Voting Categories</h1>
-        <ul class="cards">
-            <li class="cards_item">
-                <div class="card">
-                    <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
-                    <div class="card_content">
-                        <h2 id='award-category' class="card_title">Award_Category</h2>
-                        <p id='description' class="card_text">This category represent a candidate that has performed
-                            both in character
-                            and style bla bla bla category description.</p>
-                        <a href="./category_nominees.html"><button class="btn card_btn">View Nominees</button></a>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <ul id="cards" class="cards"></ul>
     </div>
-
 
 </body>
 
