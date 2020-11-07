@@ -21,3 +21,16 @@
   .team__item{height:350px}
   .team__text{padding:25px 20px 20px}
 }
+.btn {
+  color: #fff !important;
+  padding: 0.8rem;
+  font-size: 15px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgb(255, 255, 255);
+  /* background: transparent; */
+}

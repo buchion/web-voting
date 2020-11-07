@@ -5,80 +5,77 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./category.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <title>Nominees</title>
 </head>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.get("https://www.change360network.com/slaw/api/nominees/?award_category=1", function (data, status) {
+            var Nominees = data.results;
+            console.log(Nominees);
+            var award_category = '';
+            $.each(Nominees, function (key, value) {
+
+                //     $('#cards').append(
+                //         `<li id="cards_item" class="cards_item">
+                //             <div id="card" class="card">
+                //             <div class="card_image"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"></div>
+                //             <div class="card_content">
+                //             <h2 id='award-category' class="card_title">${value.Award_Category}</h2>
+                //             <p id='description' class="card_text">${value.Details}</p>
+                //             <a href="./category_nominees.html+${value.id}"><button class="btn card_btn">View Nominees</button></a>
+                //         </div>
+                //     </div>
+                // </li>`
+                //     )
+
+                $('#row').append(
+                    `<div class="col-lg-4 col-md-6">
+                <div class="team__item set-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');">
+                    <div class="team__text">
+                        <div class="team__title">
+                            <h4>${value.full_name}</h4>
+                            <span><strong>${value.institution}</strong></span>
+                        </div>
+                        <p>Reason for Nomination:<br> <strong>${value.reason_for_nomination}</strong></p>
+                        <p> Course of Study:<br><strong> ${value.course_of_study}</strong></p>
+                        <p>Grade Point Average :<br><strong>${value.cumulative_grade_point}</strong></p>
+                        <br>
+                        <button class="btn"><strong>VOTE ${value.full_name}</strong></button>
+                        
+                    </div>
+                </div>
+            </div>`
+                )
+
+
+            });
+        });
+    });
+
+</script>
 
 <body>
     <br>
 
     <div class="container">
-        <h3>Nominees for {{Category}}</h3>
+        <h3>Nominees for {Award_Category}</h3>
         <br>
-        <div class="row">
-            <!-- Single Starts  -->
-            <div class="col-lg-4 col-md-6">
-                <div class="team__item set-bg"
-                    style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');">
-                    <div class="team__text">
-                        <div class="team__title">
-                            <h4>Tokunbo Adedotun</h4>
-                            <span>Web Developer</span>
-                        </div>
-                        <p>Vestibulum dapibus odio quam, sit amet hendrerit dui ultricies consectetur. Ut viverra
-                            porta leo, non tincidunt mauris condimentu eget. Vivamus non turpis elit. Aenean
-                            ultricies nisl sit amet.</p>
-                        <div class="team__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Single Ends    -->
-            <div class="col-lg-4 col-md-6">
-                <div class="team__item set-bg"
-                    style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');">
-                    <div class="team__text">
-                        <div class="team__title">
-                            <h4>Michael Agu Onochie</h4>
-                            <span>Web Developer</span>
-                        </div>
-                        <p>Vestibulum dapibus odio quam, sit amet hendrerit dui ultricies consectetur. Ut viverra
-                            porta leo, non tincidunt mauris condimentu eget. Vivamus non turpis elit. Aenean
-                            ultricies nisl sit amet.</p>
-                        <div class="team__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="team__item set-bg"
-                    style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');">
-                    <div class="team__text">
-                        <div class="team__title">
-                            <h4>Rabiu Ciroma Hassan</h4>
-                            <span>Web Developer</span>
-                        </div>
-                        <p>Vestibulum dapibus odio quam, sit amet hendrerit dui ultricies consectetur. Ut viverra
-                            porta leo, non tincidunt mauris condimentu eget. Vivamus non turpis elit. Aenean
-                            ultricies nisl sit amet.</p>
-                        <div class="team__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="row" class="row">
+
+
+
         </div>
     </div>
 </body>
