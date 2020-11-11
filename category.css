@@ -18,7 +18,7 @@
 .team__text .team__social a:last-child{margin-right:0}
 .team__text .team__social a:hover{color:#88C417}
 @media(max-width:768px) {
-  .team__item{height:350px}
+  .team__item{height:455px}
   .team__text{padding:25px 20px 20px}
 }
 .btn {
